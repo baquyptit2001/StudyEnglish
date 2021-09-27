@@ -6,4 +6,4 @@ git checkout -b [tên branch] <br />
 git checkout main <br />
 git pull <br />
 
-#Tuyệt đối không merge vào nhánh main
+# Tuyệt đối không merge vào nhánh main #
