@@ -5,5 +5,7 @@ git checkout -b [tên branch] <br />
 3. Mỗi khi push thì mọi người sẽ checkout sang nhánh main và pull code lại rồi mới thực hiện push <br />
 git checkout main <br />
 git pull <br />
+4. Mọi người run app bằng <br />
+manage.py runserver --insecure
 
 # Tuyệt đối không merge vào nhánh main #
