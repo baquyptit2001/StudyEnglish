@@ -6,6 +6,6 @@ git checkout -b [tên branch] <br />
 git checkout main <br />
 git pull <br />
 4. Mọi người run app bằng <br />
-manage.py runserver --insecure
+python manage.py runserver --insecure
 
 # Tuyệt đối không merge vào nhánh main #
