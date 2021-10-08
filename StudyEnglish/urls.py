@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Home.urls')),
     path('accounts/', include('Account.urls')),
+    path('games/', include('Game.urls')),
 ]
 
 handler404 = 'Home.views.error_404'
