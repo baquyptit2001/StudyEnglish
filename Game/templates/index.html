@@ -1,16 +1,111 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Đoán tư{% endblock %}
+{% block title %}Guess the word{% endblock %}
 
 {% block content %}
-
+    <div class="card mb-5">
+        <div class="card-body">
+            <p class="card-text" style="font-size:30px !important;line-height:1 !important;">
+                ... is your name
+            </p>
+        </div>
+    </div>
+    <div class="card mb-4 mt-5">
+        <div class="card-body">
+            <div class="row answer">
+                <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                    <button type="button" answer="A" right="false"
+                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                            style="font-size: 20px !important;">When
+                    </button>
+                </div>
+                <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                    <button type="button" answer="B" right="true"
+                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                            style="font-size: 20px !important;">WTF
+                    </button>
+                </div>
+                <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                    <button type="button" answer="C" right="false"
+                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                            style="font-size: 20px !important;">How
+                    </button>
+                </div>
+                <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                    <button type="button" answer="D" right="false"
+                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                            style="font-size: 20px !important;">Why
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-inline-block">
+        <div
+                class="modal fade modal-success text-start"
+                id="true-modal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel1660"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel1660">Congratulations !!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        “Hooray! We just couldn’t be happier for you!”
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success modal-again" data-bs-dismiss="modal">Another Question</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+                class="modal fade modal-danger text-start"
+                id="false-modal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel1660"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel1660">OOps !!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Better luck next time! Keep going
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger modal-again" data-bs-dismiss="modal">Try again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
     <script>
-        $(document).ready(function(){
-          $("#text").val("abc");
+        $(document).ready(function () {
+            $(".answer-btn").click(function () {
+                if ($(this).attr("right") === "true") {
+                    $(this).removeClass('btn-info').addClass('btn-success')
+                    $('#true-modal').modal('show')
+                } else {
+                    $(this).removeClass('btn-info').addClass('btn-danger')
+                    $(".answer").find("[right='true']").addClass("btn-success").removeClass("btn-info")
+                    $('#false-modal').modal('show')
+                }
+                $(".answer-btn").attr('disabled', true)
+            });
+            $(".modal-again").click(function () {
+                location.reload();
+            })
         });
     </script>
 {% endblock %}
