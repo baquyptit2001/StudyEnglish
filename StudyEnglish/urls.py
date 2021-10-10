@@ -21,6 +21,7 @@ urlpatterns = [
     path('', include('Home.urls')),
     path('accounts/', include('Account.urls')),
     path('games/', include('Game.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 handler404 = 'Home.views.error_404'
