@@ -38,16 +38,16 @@ img{
 .censored{
     position:absolute;
     background-color:rgb(248, 248, 248);
-    width: 100%;
+    width: 95%;
     height: 200px;
 }
-.icon{
+.iconchange{
     position:absolute;
     top: 50%;
     left: 48%;
     width: 3%;
 }
-.icon i::before{
+.iconchange i::before{
 
     font-size: 30px;
 }
@@ -139,7 +139,7 @@ img{
      
         display: block;
     }
-    .icon{
+    .iconchange{
         position:relative;
         top:50%;
         transform: rotate(90deg);
