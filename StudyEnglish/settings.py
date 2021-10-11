@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Home.apps.HomeConfig',
     'Account.apps.AccountConfig',
+    'Game.apps.GameConfig',
     'Term.apps.TermConfig',
 ]
 
@@ -141,3 +142,11 @@ try:
     }
 except Exception as e:
     pass
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'phamvantuantplinh@gmail.com'
+EMAIL_HOST_PASSWORD = 'wnwttpsirkgqwgnu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'quypro@gmail.com'

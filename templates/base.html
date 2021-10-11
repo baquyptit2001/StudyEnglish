@@ -53,7 +53,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav bookmark-icons">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html"
+                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{% url 'game.home' %}"
                                                           data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                           title="Email"><i class="ficon" data-feather="mail"></i></a>
                 </li>
@@ -530,8 +530,8 @@
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                     data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span
-                    class="menu-title text-truncate" data-i18n="Email">Email</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'game.home' %}"><i data-feather='code'></i><span
+                    class="menu-title text-truncate" data-i18n="Email">Game</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i
                     data-feather="message-square"></i><span class="menu-title text-truncate"
@@ -1031,8 +1031,12 @@
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
-    {% block content %}
-    {% endblock %}
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-body">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
 </div>
 
 <!-- BEGIN: Footer-->
@@ -1072,6 +1076,8 @@
         }
     })
 </script>
+{% block js %}
+{% endblock %}
 </body>
 <!-- END: Body-->
 
