@@ -66,8 +66,8 @@
                                                           data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                           title="Calendar"><i class="ficon" data-feather="calendar"></i></a>
                 </li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-bs-toggle="tooltip"
-                                                          data-bs-placement="bottom" title="Todo"><i class="ficon"
+                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{% url 'term' %}" data-bs-toggle="tooltip"
+                                                          data-bs-placement="bottom" title="Term"><i class="ficon"
                                                                                                      data-feather="check-square"></i></a>
                 </li>
             </ul>
@@ -538,8 +538,8 @@
                     data-feather="message-square"></i><span class="menu-title text-truncate"
                                                             data-i18n="Chat">Chat</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i
-                    data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'term' %}"><i
+                    data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Term</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i
                     data-feather="calendar"></i><span class="menu-title text-truncate"
