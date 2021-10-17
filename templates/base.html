@@ -38,6 +38,9 @@
           href="{% static 'app-assets/css/plugins/extensions/ext-component-toastr.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
 
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/trantext/tran.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
 </head>
 <!-- END: Head-->
 
@@ -534,9 +537,9 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'game.home' %}"><i data-feather='code'></i><span
                     class="menu-title text-truncate" data-i18n="Email">Game</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'translate' %}"><i
                     data-feather="message-square"></i><span class="menu-title text-truncate"
-                                                            data-i18n="Chat">Chat</span></a>
+                                                            data-i18n="Chat">Translate</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i
                     data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>

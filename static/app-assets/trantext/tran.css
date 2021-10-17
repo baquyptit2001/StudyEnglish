@@ -1,0 +1,150 @@
+.head{
+   
+    font-size: 40px;
+}
+.up{
+    position: relative;
+    left: 40%;
+}
+.down{
+    position: relative;
+    left: 50%;
+}
+.block-textarea{
+    display: flex;
+    justify-content: space-around;
+    position:absolute;
+    top: 38%;
+    left: 5%;
+}
+.tran-text{
+    position: relative;
+    
+}
+.tran-text textarea{
+    width: 90%;
+    resize: none;
+    margin: 20px;
+}
+img{
+    width: 500px;
+    height: 200px;
+    position:absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+   
+}
+.censored{
+    position:absolute;
+    background-color:rgb(248, 248, 248);
+    width: 95%;
+    height: 200px;
+}
+.iconchange{
+    position:absolute;
+    top: 50%;
+    left: 48%;
+    width: 3%;
+}
+.iconchange i::before{
+
+    font-size: 30px;
+}
+.dropdown{
+    margin-left:20px ;
+   
+
+}
+.dropdown select{
+    padding: 10px;
+    border-radius:0;
+  
+    color:black;
+
+    outline: none;
+    
+}
+.dropdown select option:hover{
+    background-color:  blueviolet;
+    font-size: 15px;
+}
+
+.pointer{
+    position: absolute;
+    width: 23px;
+    height: 40px;
+  
+    left: 131px;
+    z-index: 1;
+    pointer-events: none;
+}
+.button{
+    position:absolute;
+    right: 10%;
+    bottom: 12%;
+    padding: 8px 15px;
+    border-radius: 15px;
+    background-color: rgb(115, 103, 240);
+    color:white;
+    border:none;
+}
+.button:hover{
+    opacity:0.9;
+
+}
+.textarea-and-icon{
+    position: sticky;
+}
+.icon-list{
+    background-color: transparent;
+    font-size: 20px;
+    position: absolute;
+    bottom: 12%;
+    left: 5%;
+    border: none;
+    margin: 0 5px;
+    outline: none;
+   
+}
+.icon-list .sound{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 31px;
+    height: 35px;
+}
+.icon-list .micro{
+    outline: none;
+    background-color:transparent;
+    border: none;
+    height: 13.7px;
+    width: 20px;
+}
+.fa-microphone:hover{
+    font-size: 25px;
+    color: red;
+}
+.fa-volume-up:hover{
+    font-size: 25px;
+    color: red;
+}
+.bigtoglle{
+    font-size: 25px;
+    color: red;
+}
+@media only screen and (max-width:1000px){
+    
+    .block-textarea{
+     
+        display: block;
+    }
+    .iconchange{
+        position:relative;
+        top:50%;
+        transform: rotate(90deg);
+    }
+    .icon-list{
+        left: 6%;
+    }
+  }

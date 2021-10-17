@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Account.apps.AccountConfig',
     'Game.apps.GameConfig',
     'Term.apps.TermConfig',
+    'Translate.apps.TranslateConfig',
 ]
 
 MIDDLEWARE = [
