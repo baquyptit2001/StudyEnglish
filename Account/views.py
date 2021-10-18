@@ -31,6 +31,39 @@ def register(request):
             messages.success(request, "Sign Up Successfully")
             return redirect('login')
     return render(request, 'register.html')
+def change_password(request):
+    a=request.user.password
+    if request.method == "POST":
+        if request.POST['new_password1'] != request.POST['new_password2']:
+            messages.error(request, "Confirm new password is incorrect")
+        elif not check_password(request.POST['old_password'],a):
+            messages.error(request, "Incorrect old password")
+        else:
+            u = User.objects.get(username=request.user.username)        
+            u.set_password(request.POST['new_password1'])
+            u.save()
+            messages.success(request, "Change password successfully")
+            return redirect('login')
+    return render(request,'change_password.html')
+def profile(request):
+    p = Profile.objects.filter(name=request.user.username)  
+    if not p.all():
+        p=Profile()
+        p.name=request.user.username
+        p.save()
+        return render(request,'profile.html',{'p':p})
+    p = Profile.objects.get(name=request.user.username)
+    if request.method == "POST":
+        p.first_name=request.POST['first_name']
+        p.last_name=request.POST['last_name']
+        p.email=request.POST['email']
+        p.phone=request.POST['phone']
+        p.country=request.POST['country']
+        p.language=request.POST['language']
+        p.image.url=request.FILES['image']
+        p.save()
+        return render(request,'profile.html',{'p':p})
+    return render(request,'profile.html',{'p':p})
 
 
 def log_out(request):
