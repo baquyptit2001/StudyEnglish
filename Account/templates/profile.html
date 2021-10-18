@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<style type="text/css">
+.wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px
+}
+.img {
+    width: 89px;
+    height: 89px;
+    border-radius: 6px;
+    object-fit: cover
+}
+.button {
+    background-color: #fff;
+    color: #0779e4
+}
+.btn-primary {
+    background-color: #0779e4
+}
+select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px 10px
+}
+</style>
+<div class="wrapper">
+    <h4 class="pb-4">Account settings</h4>
+    <form method='post' enctype="multipart/form-data"> 
+    <input type="file" name="image" id="asgnmnt_file" style="display:none;" onchange="fileSelected(this)">
+    <div> <img id="asgnmnt_file_img" src="{{p.image.url}}" class="img rounded-circle" onclick="passFileUrl()" style="cursor:pointer;" alt=""></div>
+    {% csrf_token %}
+    <div class="py-2">
+        <div class="row py-2">
+            <div class="col-md-6"> <label for="firstname">First Name</label> <input type="text" class="bg-light form-control" value='{{p.first_name}}' name='first_name'> </div>
+            <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Last Name</label> <input type="text" class="bg-light form-control" value='{{p.last_name}}' name='last_name'> </div>
+        </div>
+
+        <div class="row py-2">
+            <div class="col-md-6"> <label for="email">Email Address</label> <input type="text" class="bg-light form-control" value='{{p.email}}' name='email'> </div>
+            <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="tel" class="bg-light form-control" value='{{p.phone}}' name='phone'> </div>
+        </div>
+
+        <div class="row py-2">
+            <div class="col-md-6"> <label for="country">Country</label> 
+                <select name="country" class="bg-light form-control">
+                    <option value='{{p.country}}' hidden selected>{{p.country}}</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="London">London</option>
+                    <option value="Seoul">Seoul</option>
+                    <option value="Beijing">Beijing</option>
+                </select> 
+            </div>
+            <div class="col-md-6 pt-md-0 pt-3"> <label for="language">Language</label>
+                <select name="language" class="bg-light form-control">
+                    <option value='{{p.language}}' hidden selected>{{p.language}}</option>
+                    <option value="Tiếng Anh">Tiếng Anh</option>
+                    <option value="Tiếng Trung">Tiếng Trung</option>
+                    <option value="Tiếng Nhật">Tiếng Nhật</option>
+                    <option value="Tiếng Việt">Tiếng Việt</option>
+                    <option value="Tiếng Hàn">Tiếng Hàn</option>
+                </select> 
+            </div>
+        </div>
+
+        <div class="py-3 pb-4"> <button class="btn btn-primary mr-3">Save Changes</button> 
+        <a href="{% url 'change_password' %}" class="btn button">Change password</a>
+        </div>    
+    </div>
+    </form>
+
+     <script>
+    function passFileUrl(){
+        document.getElementById('asgnmnt_file').click();
+    }
+
+    function fileSelected(inputData){
+        document.getElementById('asgnmnt_file_img').src = window.URL.createObjectURL(inputData.files[0])
+    }
+    </script>
+</div>
+{% endblock %}
