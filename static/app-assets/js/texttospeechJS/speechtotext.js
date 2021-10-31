@@ -1,11 +1,12 @@
 
-
 window.SpeechRecognition =
-window.SpeechRecognition || window.webkitSpeechRecognition;
-
+window.SpeechRecognition ||
+ window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 recognition.interimResults = true;
 recognition.continuous = true;
+var langopt=$('#select1').val();
+ recognition.lang=langopt;
 var textarea=$("#textscan");
 recognition.addEventListener("result", (e) => {
 const text = Array.from(e.results)
@@ -14,21 +15,23 @@ const text = Array.from(e.results)
    .join("");
     textarea.val(text)
 });
+
 var t = document.getElementById("recognize-btn");
-function micro() {
+ function micro() {
+   recognition.lang=String($('#select1').val());
     if(t.value==="YES"){
        recognition.stop();
        t.value="NO";
        $('#textscan').prop('disabled', false);
-        document.getElementById("microphone-icon").className='{% static "fas fa-microphone" %}';
-      //  document.getElementById('fa-microphone').setAttribute("style","color:black");
+       
+        document.getElementById('recognize-btn').setAttribute("style","color:black");
     }
     else if(t.value==="NO"){
         t.value="YES";
         recognition.start();
          $('#textscan').prop('disabled', true);
-        document.getElementById("microphone-icon").className='{% static "fas fa-stop" %}';
-        // document.getElementById('fas fa-stop').setAttribute("style","color:red");
+        document.getElementById('textscan').setAttribute("style","background-color:#F8F8F8;")
+        document.getElementById('recognize-btn').setAttribute("style","color:red");
     }
     
 }

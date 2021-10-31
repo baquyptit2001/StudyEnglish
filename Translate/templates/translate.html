@@ -41,7 +41,7 @@
            </div>
           </form>
            <div class="list-button">
-             <button class="micro-button" id="recognize-btn" onclick="micro()" value="NO" onchange="unabletexarea()"><i class="fas fa-microphone" id="microphone-icon"></i></button>
+             <button class="micro-button" id="recognize-btn"  value="NO" onclick="micro()"><i class="fas fa-microphone" id="microphone-icon"></i></button>
              <button class="audio-button" onclick="textSpeak()" ><i class="fas fa-volume-up"></i></button>
           </div>
        </div>
@@ -71,65 +71,7 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=uQLgOaRo"></script>
     <script src="{% static 'app-assets/js/texttospeechJS/texttospeech.js' %}"></script>
-    <!-- <script src="{% static 'app-assets/js/texttospeechJS/speechtotext.js' %}"></script> -->
-    <script>
-          window.SpeechRecognition =
-          window.SpeechRecognition || window.webkitSpeechRecognition;
-          const recognition = new SpeechRecognition();
-          recognition.interimResults = true;
-          recognition.continuous = true;
-          var textarea=$("#textscan");
-          recognition.addEventListener("result", (e) => {
-          const text = Array.from(e.results)
-            .map((result) => result[0])
-            .map((result) => result.transcript)
-            .join("");
-              textarea.val(text)
-          });
-          var t = document.getElementById("recognize-btn");
-          function micro() {
-              if(t.value==="YES"){
-                recognition.stop();
-                t.value="NO";
-                $('#textscan').prop('disabled', false);
-                  // document.getElementById("microphone-icon").className="fas fa-microphone";
-                //  document.getElementById('fa-microphone').setAttribute("style","color:black");
-              }
-              else if(t.value==="NO"){
-                  t.value="YES";
-                  recognition.start();
-                  $('#textscan').prop('disabled', true);
-                  // document.getElementById("microphone-icon").className="fas fa-stop";
-                  // document.getElementById('fas fa-stop').setAttribute("style","color:red");
-              }
-              
-          }
-    </script>
-    <script>
-        function unabletexarea(){
-          var t = document.getElementById("recognize-btn");
-          if(t.value==="YES"){
-                $('#textscan').prop('disabled', true);
-                  // document.getElementById("microphone-icon").className="fas fa-microphone";
-                //  document.getElementById('fa-microphone').setAttribute("style","color:black");
-              }
-              else if(t.value==="NO"){
-                
-                  $('#textscan').prop('disabled', false);
-                  // document.getElementById("microphone-icon").className="fas fa-stop";
-                  // doc
-        }
-      }
-      function changecolormicro(){
-        var t = document.getElementById("recognize-btn");
-          if(t.value==="YES"){
-            document.getElementById('recognize-btn').style.color='red';
-              }
-              else if(t.value==="NO"){
-                  $('#textscan').prop('disabled', false);
-                  document.getElementById('recognize-btn').style.color='black';
-        }
-      }
-    </script>
+     <script src="{% static 'app-assets/js/texttospeechJS/speechtotext.js' %}"></script> 
+    
    
 {% endblock %}

@@ -104,7 +104,7 @@
      left: 1%;
      
  }
- .micro-button{
+ .micro-button{ 
      border: none;
      background-color: transparent;
      font-size: 20px;
@@ -118,7 +118,7 @@
      border: none;
      background-color: transparent;
      font-size: 20px;
-     color: violet;
+     
  }
  .fa-volume-up:hover{
      color: red;
