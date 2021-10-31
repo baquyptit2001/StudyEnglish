@@ -1,62 +1,61 @@
 {% extends 'base.html' %}
+{% load static  %}
 {% block title %} TransLate {% endblock %}
 {% block content %}
 
 <h2 class="head"><span class="up"> Machine</span>
-    <br><span class="down">      Translator</span></br> </h2>
- 
-   <div class="censored"></div>
-  <div class="block-textarea">
+  <br><span class="down">      Translator</span></br> </h2>
   
-  <div class="tran-text">
-   <span class="pointer"></span>
-    <div class="dropdown">
-     <form action="{% url 'translate' %}" method="POST">
-        {% csrf_token %}
-      <select name="src" id="inputSate">
-        <option value="auto">Tự động dịch</option>
-        <option value="en">Tiếng Anh</option>
-        <option value="vi">Tiếng Việt</option>
-        <option value="fr">Tiếng Pháp</option>
-        <option value="ru">Tiếng Nga</option>
-      </select>
-     
-    </div>
-     <!-- nhap text can dich -->
-    <div class="textare-and-icon">
-      <div class="icon-list">
-        <!-- button micro -->
-      <button class="micro" name=""><i class="fas fa-microphone"></i></button>
-        <!-- button sound -->
-      <button class="sound" name=""><i class="fas fa-volume-up"></i></button>
-    </div>
-      <textarea name="text" id="textscan" onkeyup="success()" cols="70" rows="8" placeholder="Nhập chữ vào đây"></textarea>
-      <!-- button dich -->
-      <button class="button" type="submit" name="" id="submit" disabled>Dịch</button>
-    </div>
-  
-    </div>
-  <div class="iconchange"><i class="fas fa-arrows-alt-h"></i></div>
-  <!-- textarea sau khi dich -->
-  <div class="tran-text">
-    <div class="dropdown">
-      <!-- chon ngon ngu dc dich ra -->
-    <select name="des" id="OutputSate">
-      <option value="en">Tiếng Anh</option>
-      <option value="vi">Tiếng Việt</option>
-      <option value="fr">Tiếng Pháp</option>
-      <option value="ru">Tiếng Nga</option>
-    </select>
-  </div>
-  <div class="textare-and-icon">
-    <div class="icon-list">
-    <button class="sound"><i class="fas fa-volume-up"></i></button>
-  </div>
-  <div>
-    <textarea name="" id="" cols="70" rows="8" disabled="true">{{ result }}</textarea>
-  </form>
-  </div>
-  </div>
+<div class="stydy-block">
+ <div class="translate-block">
+   <div class="dropdownoption-language">
+     <div class="select-block">
+       <div class="select-option">
+         <form action="" method="POST">
+          {% csrf_token %}
+           <select name="src" id="select1" onchange="changeoption()">
+            <option value="en-US" {% if context.srcs == 'en'%} selected {% endif %} >Tiếng Anh</option>
+            <option value="vi-VN" {% if context.srcs == 'vi'%} selected {% endif %}>Tiếng Việt</option>
+            <option value="fr-FR" {% if context.srcs == 'fr'%} selected {% endif %}>Tiếng Pháp</option>
+            <option value="ru-RU" {% if context.srcs == 'ru'%} selected {% endif %}>Tiếng Nga</option>
+           </select>
+       </div>
+       <div class="iconswitch-1"><i class="fas fa-arrows-alt-h"></i></div>
+     <div class="select-option">
+       <select name="des" id="select2" onchange="changeoptiontransleted()">
+        <option value="en-US" {% if context.des == 'en'%} selected {% endif %} >Tiếng Anh</option>
+        <option value="vi-VN" {% if context.des  == 'vi'%} selected {% endif %}>Tiếng Việt</option>
+        <option value="fr-FR" {% if context.des  == 'fr'%} selected {% endif %}>Tiếng Pháp</option>
+        <option value="ru-RU" {% if context.des  == 'ru'%} selected {% endif %}>Tiếng Nga</option>
+       </select>
+      </div>
+</div>
+</div>
+   <div class="text-area">
+     <div class="textabsoluted">
+       <div class="texttranslate">
+           <textarea name="text" id="textscan" cols="80" rows="8" class="scan" onkeyup="unabletexarea()">{{input}}</textarea>
+           <div class="translate-button-block">
+              <button class="translate-button" onkeyup="success()"> Dịch</button>
+              
+           </div>
+          </form>
+           <div class="list-button">
+             <button class="micro-button" id="recognize-btn" onclick="micro()" value="NO" onchange="unabletexarea()"><i class="fas fa-microphone" id="microphone-icon"></i></button>
+             <button class="audio-button" onclick="textSpeak()" ><i class="fas fa-volume-up"></i></button>
+          </div>
+       </div>
+       <div class="iconswitch"><i class="fas fa-arrows-alt-h"></i></div>
+       <div class="texttranslate">
+         <textarea name="" id="aftertranslate" cols="80" rows="8" disabled class="scan">{{output}}</textarea>
+         <div class="list-button">
+           <button class="audio-button" onclick="textSpeakTranslated()"><i class="fas fa-volume-up"></i></button>
+        </div>
+     </div>
+   </div>
+</div>
+</div>
+</div>
 {% endblock %}
 
 {% block js %}
@@ -68,7 +67,69 @@
             document.getElementById('submit').disabled = false;
         }
     }
-  
     </script>
-  
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=uQLgOaRo"></script>
+    <script src="{% static 'app-assets/js/texttospeechJS/texttospeech.js' %}"></script>
+    <!-- <script src="{% static 'app-assets/js/texttospeechJS/speechtotext.js' %}"></script> -->
+    <script>
+          window.SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+          const recognition = new SpeechRecognition();
+          recognition.interimResults = true;
+          recognition.continuous = true;
+          var textarea=$("#textscan");
+          recognition.addEventListener("result", (e) => {
+          const text = Array.from(e.results)
+            .map((result) => result[0])
+            .map((result) => result.transcript)
+            .join("");
+              textarea.val(text)
+          });
+          var t = document.getElementById("recognize-btn");
+          function micro() {
+              if(t.value==="YES"){
+                recognition.stop();
+                t.value="NO";
+                $('#textscan').prop('disabled', false);
+                  // document.getElementById("microphone-icon").className="fas fa-microphone";
+                //  document.getElementById('fa-microphone').setAttribute("style","color:black");
+              }
+              else if(t.value==="NO"){
+                  t.value="YES";
+                  recognition.start();
+                  $('#textscan').prop('disabled', true);
+                  // document.getElementById("microphone-icon").className="fas fa-stop";
+                  // document.getElementById('fas fa-stop').setAttribute("style","color:red");
+              }
+              
+          }
+    </script>
+    <script>
+        function unabletexarea(){
+          var t = document.getElementById("recognize-btn");
+          if(t.value==="YES"){
+                $('#textscan').prop('disabled', true);
+                  // document.getElementById("microphone-icon").className="fas fa-microphone";
+                //  document.getElementById('fa-microphone').setAttribute("style","color:black");
+              }
+              else if(t.value==="NO"){
+                
+                  $('#textscan').prop('disabled', false);
+                  // document.getElementById("microphone-icon").className="fas fa-stop";
+                  // doc
+        }
+      }
+      function changecolormicro(){
+        var t = document.getElementById("recognize-btn");
+          if(t.value==="YES"){
+            document.getElementById('recognize-btn').style.color='red';
+              }
+              else if(t.value==="NO"){
+                  $('#textscan').prop('disabled', false);
+                  document.getElementById('recognize-btn').style.color='black';
+        }
+      }
+    </script>
+   
 {% endblock %}
