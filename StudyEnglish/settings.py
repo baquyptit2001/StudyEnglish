@@ -40,12 +40,16 @@ INSTALLED_APPS = [
     'Account.apps.AccountConfig',
     'Game.apps.GameConfig',
 
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+
+    'Term.apps.TermConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -154,6 +158,16 @@ try:
 except Exception as e:
     pass
 
+
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'phamvantuantplinh@gmail.com'
+EMAIL_HOST_PASSWORD = 'wnwttpsirkgqwgnu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'quypro@gmail.com'
+

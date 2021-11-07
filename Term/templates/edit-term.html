@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Term {% endblock %}
+
+{% block content %}
+    <div class="row match-height">
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="card card-congratulation-medal">
+                <div class="card-body">
+                    <h3 class="mb-75 mt-2 pt-50">Term</h3>
+                    <img src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/illustration/badge.svg"
+                        class="congratulation-medal" alt="Medal Pic"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-8 col-md-6 col-12">
+            <div class="card card-statistics">
+                <div class="card-header">
+                    <h4 class="card-title">Update Term</h4>
+                </div>
+                <div class="card-body statistics-body">
+                    <form class="row" method="POST" action="{% url 'edit_term' term.id %}">
+                        {% csrf_token %}
+                        <div class="col-xl-9 col-sm-9 col-12 mb-2 mb-xl-0">
+                            <input class="form-control" id="term" type="text" name="term" value="{{ term.term_name }}" tabindex="1"/>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-3 col-12 mb-2 mb-xl-0 ">
+                            <button class="btn btn-primary w-100" tabindex="1">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
