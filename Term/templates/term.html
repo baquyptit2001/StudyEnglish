@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Term {% endblock %}
+
+{% block content %}
+    <div class="row match-height">
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="card card-congratulation-medal">
+                <div class="card-body">
+                    <h3 class="mb-75 mt-2 pt-50">Term</h3>
+                    <h4 class="mb-75 mt-2 pt-50">You have {{ count }} terms</h4>
+                    <img src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/illustration/badge.svg"
+                        class="congratulation-medal" alt="Medal Pic"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-8 col-md-6 col-12">
+            <div class="card card-statistics">
+                <div class="card-header">
+                    <h4 class="card-title">Create Term</h4>
+                </div>
+                <div class="card-body statistics-body">
+                    <form class="row" method="POST">
+                        {% csrf_token %}
+                        <div class="col-xl-9 col-sm-9 col-12 mb-2 mb-xl-0">
+                            <input class="form-control" id="term" type="text" name="term" tabindex="1"/>
+                        </div>
+
+                        <div class="col-xl-3 col-sm-3 col-12 mb-2 mb-xl-0 ">
+                            <button class="btn btn-primary w-100" tabindex="1">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row border-4 border-top pb-5"></div>
+    
+    <div class="row match-height">
+        {% for term in terms %}
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="card card-transaction">
+                    <div class="card-header">
+                        <a class="card-title" href="{% url 'vocabulary' term.id %}">{{ term.term_name }}</a>
+                        <div class="dropdown chart-dropdown">
+                            <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"
+                                data-bs-toggle="dropdown"></i>
+                            <div class="dropdown-menu">                                    
+                                <a class="dropdown-item" href="{% url 'edit_term' term.id %}">Edit</a>
+                                <a class="dropdown-item" href="{% url 'delete_term' term.id %}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="card-body p-0">
+                        <div class="row border-top text-center mx-0">
+                            <h2 class="fw-bolder m-1">2912 words</h2>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        {% endfor %} 
+    </div>
+
+{% endblock %}
