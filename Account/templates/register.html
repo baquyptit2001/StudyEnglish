@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -158,10 +160,9 @@
                             <div class="divider my-2">
                                 <div class="divider-text">or</div>
                             </div>
-                            <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook"
-                                                                                          href="#"><i
+                            <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="{% provider_login_url 'facebook' method='js_sdk' %}"><i
                                     data-feather="facebook"></i></a><a class="btn btn-twitter white" href="#"><i
-                                    data-feather="twitter"></i></a><a class="btn btn-google" href="#"><i
+                                    data-feather="twitter"></i></a><a class="btn btn-google" href="{% provider_login_url 'google' %}"><i
                                     data-feather="mail"></i></a><a class="btn btn-github" href="#"><i
                                     data-feather="github"></i></a></div>
                         </div>

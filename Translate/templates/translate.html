@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="head"><span class="up"> Machine</span>
+    <br><span class="down">      Translator</span></br> </h2>
+ 
+   <div class="censored"></div>
+  <div class="block-textarea">
+  
+  <div class="tran-text">
+   <span class="pointer"></span>
+    <div class="dropdown">
+     <form action="{% url 'translate' %}" method="POST">
+        {% csrf_token %}
+      <select name="src" id="inputSate">
+        <option value="auto">Tự động dịch</option>
+        <option value="en">Tiếng Anh</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="fr">Tiếng Pháp</option>
+        <option value="ru">Tiếng Nga</option>
+      </select>
+     
+    </div>
+     <!-- nhap text can dich -->
+    <div class="textare-and-icon">
+      <div class="icon-list">
+        <!-- button micro -->
+      <button class="micro" name=""><i class="fas fa-microphone"></i></button>
+        <!-- button sound -->
+      <button class="sound" name=""><i class="fas fa-volume-up"></i></button>
+    </div>
+      <textarea name="text" id="textscan" onkeyup="success()" cols="70" rows="8" placeholder="Nhập chữ vào đây"></textarea>
+      <!-- button dich -->
+      <button class="button" type="submit" name="" id="submit" disabled>Dịch</button>
+    </div>
+  
+    </div>
+  <div class="icon"><i class="fas fa-arrows-alt-h"></i></div>
+  <!-- textarea sau khi dich -->
+  <div class="tran-text">
+    <div class="dropdown">
+      <!-- chon ngon ngu dc dich ra -->
+    <select name="des" id="OutputSate">
+      <option value="en">Tiếng Anh</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="fr">Tiếng Pháp</option>
+      <option value="ru">Tiếng Nga</option>
+    </select>
+  </div>
+  <div class="textare-and-icon">
+    <div class="icon-list">
+    <button class="sound"><i class="fas fa-volume-up"></i></button>
+  </div>
+  <div>
+    <textarea name="" id="" cols="70" rows="8" disabled="true">{{ result }}</textarea>
+  </form>
+  </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script>
+  function success() {
+	 if(document.getElementById("textscan").value==="") { 
+            document.getElementById('submit').disabled = true; 
+        } else { 
+            document.getElementById('submit').disabled = false;
+        }
+    }
+  
+    </script>
+  
+{% endblock %}
