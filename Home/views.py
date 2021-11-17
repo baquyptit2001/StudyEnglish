@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
+from Account.models import Profile
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    p = Profile.objects.get(name=request.user.username)
+    return render(request, 'home.html',{'p':p})
 
 
 def error_404(request, exception):
