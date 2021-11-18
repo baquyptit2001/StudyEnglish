@@ -33,6 +33,10 @@ def register(request):
             user = User.objects.create_user(request.POST['username'], request.POST['email'],
                                             request.POST['password1'])
             user.save()
+            p = Profile()
+            p.name = user.username
+            p.image = 'avt.jpg'
+            p.save()
             messages.success(request, "Sign Up Successfully")
             return redirect('login')
     return render(request, 'register.html')

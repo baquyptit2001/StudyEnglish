@@ -333,7 +333,7 @@
                                 class="user-name fw-bolder">{{ request.user.username }}</span><span
                                 class="user-status">Admin</span></div>
                         <span class="avatar"><img class="round"
-                                                  src="{{ p.image.url }}"
+                                                  src="{{ profile.image.url }}"
                                                   alt="avatar" height="40" width="40"><span
                                 class="avatar-status-online"></span></span></a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
@@ -479,7 +479,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto"><a class="navbar-brand" href="index.html"><span class="brand-logo">
+            <li class="nav-item me-auto"><a class="navbar-brand" href="{% url 'home' %}"><span class="brand-logo">
                 <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                   <defs>

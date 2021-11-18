@@ -9,4 +9,4 @@ class Profile(models.Model):
     country = models.CharField(max_length=15)
     language = models.CharField(max_length=15)
     name = models.CharField(max_length=15)
-    image = models.ImageField()
+    image = models.ImageField(default='avt.jpg')

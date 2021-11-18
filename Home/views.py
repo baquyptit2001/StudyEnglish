@@ -5,11 +5,7 @@ from Account.models import Profile
 # Create your views here.
 
 def home(request):
-    try:
-        p = Profile.objects.get(name=request.user.username)
-    except Profile.DoesNotExist:
-        p = None
-    return render(request, 'home.html', {'p': p})
+    return render(request, 'home.html')
 
 
 def error_404(request, exception):
