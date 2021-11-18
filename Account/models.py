@@ -1,11 +1,12 @@
 from django.db import models
 
+
 class Profile(models.Model):
-    first_name=models.CharField(max_length=20)
-    last_name=models.CharField(max_length=20)
-    email=models.CharField(max_length=50)
-    phone=models.CharField(max_length=15)
-    country=models.CharField(max_length=15)
-    language=models.CharField(max_length=15)
-    name=models.CharField(max_length=15)
-    image=models.ImageField()
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    email = models.CharField(max_length=50)
+    phone = models.CharField(max_length=15)
+    country = models.CharField(max_length=15)
+    language = models.CharField(max_length=15)
+    name = models.CharField(max_length=15)
+    image = models.ImageField()
