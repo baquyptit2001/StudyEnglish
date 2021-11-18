@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add question word{% endblock %}
+
+{% block content %}
+    <form method="post" id="identifier">
+        {% csrf_token %}
+        <div class="card mb-5">
+            <div class="card-body">
+                <div id="editor">
+                </div>
+            </div>
+        </div>
+        <textarea name="question" style="display:none" id="hiddenArea"></textarea>
+        <textarea name="question-text" style="display:none" id="onlyText"></textarea>
+        <div class="card mb-4 mt-5">
+            <div class="card-body">
+                <div class="row answer">
+                    <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                        <button type="button" answer="A" right="false"
+                                class="answer-btn btn btn-success waves-effect waves-float waves-light w-100 p-3"
+                                style="font-size: 20px !important;">
+                            <input name="answer1">
+                        </button>
+                    </div>
+                    <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                        <button type="button" answer="B" right="true"
+                                class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                                style="font-size: 20px !important;">
+                            <input name="answer2">
+                        </button>
+                    </div>
+                    <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                        <button type="button" answer="C" right="false"
+                                class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                                style="font-size: 20px !important;">
+                            <input name="answer3">
+                        </button>
+                    </div>
+                    <div class="col-lg-3 col-md-6 pb-2 pt-2">
+                        <button type="button" answer="D" right="false"
+                                class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
+                                style="font-size: 20px !important;">
+                            <input name="answer4">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Add Question
+        </button>
+    </form>
+    <div class="d-inline-block">
+        <div
+                class="modal fade modal-success text-start"
+                id="true-modal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel1660"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel1660">Congratulations !!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        “Hooray! We just couldn’t be happier for you!”
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success modal-again" data-bs-dismiss="modal">Another
+                            Question
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+                class="modal fade modal-danger text-start"
+                id="false-modal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel1660"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel1660">OOps !!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Better luck next time! Keep going
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger modal-again" data-bs-dismiss="modal">Try again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            const quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+            $("#identifier").on("submit", function () {
+                let myEditor = document.querySelector('#editor')
+                let html = myEditor.children[0].innerHTML
+                $("#hiddenArea").val(html);
+                $("#onlyText").val(quill.getText());
+            })
+        });
+    </script>
+{% endblock %}

@@ -35,11 +35,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'Home.apps.HomeConfig',
     'Account.apps.AccountConfig',
     'Game.apps.GameConfig',
-    'Translate.apps.TranslateConfig',
+
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
     'Term.apps.TermConfig',
+    'Translate.apps.TranslateConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect',  # <-- Here
             ],
         },
     },
@@ -117,6 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL ='/static/app-assets/images/portrait/small/'
+MEDIA_ROOT= os.path.join(BASE_DIR,'static/app-assets/images/portrait/small')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -131,6 +146,7 @@ STATICFILES_DIRS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
 try:
     from django.contrib.messages import constants as messages
 
@@ -144,6 +160,11 @@ try:
 except Exception as e:
     pass
 
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'phamvantuantplinh@gmail.com'
@@ -151,3 +172,4 @@ EMAIL_HOST_PASSWORD = 'wnwttpsirkgqwgnu'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'quypro@gmail.com'
+
