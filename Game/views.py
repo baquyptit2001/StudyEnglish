@@ -5,8 +5,13 @@ from Game.models import Question, Answer
 
 
 def home(request):
-    question = Question.objects.order_by('?')[0]
-    answer = question.answer_set.order_by('?')
+    question = Question.objects.order_by('?')
+    if question.exists():
+        question = question[0]
+        answer = question.answer_set.order_by('?')
+    else:
+        question = None
+        answer = None
     return render(request, 'index.html', {"question": question, 'answer': answer})
 
 
