@@ -37,6 +37,8 @@
     <link rel="stylesheet" type="text/css"
           href="{% static 'app-assets/css/plugins/extensions/ext-component-toastr.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/trantext/tran.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'app-assets/trantext/tran.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -69,8 +71,8 @@
                                                           data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                           title="Calendar"><i class="ficon" data-feather="calendar"></i></a>
                 </li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-bs-toggle="tooltip"
-                                                          data-bs-placement="bottom" title="Todo"><i class="ficon"
+                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{% url 'term' %}" data-bs-toggle="tooltip"
+                                                          data-bs-placement="bottom" title="Term"><i class="ficon"
                                                                                                      data-feather="check-square"></i></a>
                 </li>
             </ul>
@@ -330,12 +332,12 @@
                                 class="user-name fw-bolder">{{ request.user.username }}</span><span
                                 class="user-status">Admin</span></div>
                         <span class="avatar"><img class="round"
-                                                  src="{% static 'app-assets/images/portrait/small/avatar-s-11.jpg' %}"
+                                                  src="{{ p.image.url }}"
                                                   alt="avatar" height="40" width="40"><span
                                 class="avatar-status-online"></span></span></a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
                             class="dropdown-item"
-                            href="page-profile.html"><i
+                            href="{% url 'profile' %}"><i
                             class="me-50" data-feather="user"></i> Profile</a><a class="dropdown-item"
                                                                                  href="app-email.html"><i class="me-50"
                                                                                                           data-feather="mail"></i>
@@ -541,8 +543,8 @@
                     data-feather="message-square"></i><span class="menu-title text-truncate"
                                                             data-i18n="Chat">Translate</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i
-                    data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'term' %}"><i
+                    data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Term</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i
                     data-feather="calendar"></i><span class="menu-title text-truncate"
