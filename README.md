@@ -14,8 +14,8 @@ python manage.py runserver --insecure<br />
 # Tuyệt đối không merge vào nhánh main #
 
 
-#Translate
-App Translate sử dùng thư viên googletran để dịch từ <br />
+#Translate <br />
+Translate sử dùng thư viên googletran để dịch từ <br />
 Cách cài  pip install googletrans==3.1.0a0 <br />
 Phần speech to text sử dụng web speech api của JS <br />
 Phân text to speech sử dung module  ResponsiveVoice (nguồn : https://responsivevoice.org/text-to-speech-languages)#
