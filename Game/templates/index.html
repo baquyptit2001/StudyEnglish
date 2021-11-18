@@ -7,37 +7,21 @@
     <div class="card mb-5">
         <div class="card-body">
             <p class="card-text" style="font-size:30px !important;line-height:1 !important;">
-                ... is your name
+                {{ question.name|safe }}
             </p>
         </div>
     </div>
     <div class="card mb-4 mt-5">
         <div class="card-body">
             <div class="row answer">
+                {% for ans in answer %}
                 <div class="col-lg-3 col-md-6 pb-2 pt-2">
-                    <button type="button" answer="A" right="false"
+                    <button type="button" answer="A" right="{{ ans.status }}"
                             class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
-                            style="font-size: 20px !important;">When
+                            style="font-size: 20px !important;">{{ ans.answer }}
                     </button>
                 </div>
-                <div class="col-lg-3 col-md-6 pb-2 pt-2">
-                    <button type="button" answer="B" right="true"
-                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
-                            style="font-size: 20px !important;">WTF
-                    </button>
-                </div>
-                <div class="col-lg-3 col-md-6 pb-2 pt-2">
-                    <button type="button" answer="C" right="false"
-                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
-                            style="font-size: 20px !important;">How
-                    </button>
-                </div>
-                <div class="col-lg-3 col-md-6 pb-2 pt-2">
-                    <button type="button" answer="D" right="false"
-                            class="answer-btn btn btn-info waves-effect waves-float waves-light w-100 p-3"
-                            style="font-size: 20px !important;">Why
-                    </button>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
