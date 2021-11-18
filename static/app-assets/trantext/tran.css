@@ -1,0 +1,206 @@
+x
+.head{
+    position: relative;
+     font-size: 40px;
+ }
+ .up{
+     position: relative;
+     left: 40%;
+ }
+ .down{
+     position: relative;
+     left: 50%;
+ }
+ .study-block{
+     width: 100%;
+     position: relative;
+ }
+ .translate-block{
+     position: absolute;
+     margin: 0 10%;
+     top: 35%;
+ }
+ .dropdownoption-language{
+     display: flex;
+     position: relative;
+     justify-content: space-between;
+     margin-bottom: 30px;
+     width: 100%;
+     height: 100%;
+ } 
+ .select-block{
+     display: flex;
+     justify-content: space-around;
+     width: 100%;
+     position: absolute;
+ 
+    
+ }
+ 
+ 
+ .select-option:nth-child(1){
+     width: 100%;
+ }
+ .select-option:nth-child(3){
+     width: 100%;
+     margin-left: 50px;
+ }
+ 
+ .dropdownoption-language select{
+ 
+     padding: 10px 20px;
+ }
+ .text-area{
+     width: 100%;
+     position: relative;
+     top: 20px;
+     display: flex;
+     justify-content: space-between;
+ }
+ .textabsoluted{
+     display: flex;
+     width: 100%;
+
+ }
+ .texttranslate{
+     position: relative;
+     height: 110%;
+     border: 1px solid black;
+     max-height: 215px;
+ }
+ .texttranslate textarea{
+     resize: none;
+     width: 500px;
+     border: none;
+     width: 100%;
+     overflow: none;
+     outline:none;
+     background-color: transparent;
+     height: 85%;
+     font-size: 13pt;
+  
+ }
+ .translate-button-block{
+     position:absolute;
+     right: 5%;
+     bottom: 2%;
+ }
+ .translate-button{
+    padding: 8px 18px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    background-color: rgb(115, 103, 240);
+    color: white;
+    letter-spacing: 1.5px;
+    margin: 0 auto;
+ }
+ .translate-button:hover{
+     opacity: 0.88;
+ }
+ .list-button{
+     position:absolute;
+     bottom:-1%;
+     left: 1%;
+     
+ }
+ .micro-button{ 
+     border: none;
+     background-color: transparent;
+     font-size: 20px;
+     
+ }
+ .fa-microphone:hover{
+     color: red;
+     font-size: 25px;
+ }
+ .audio-button{
+     border: none;
+     background-color: transparent;
+     font-size: 20px;
+     
+ }
+ .fa-volume-up:hover{
+     color: red;
+     font-size: 25px;
+ }
+ .iconswitch{
+     position: relative;
+     margin: 0 10px;
+     
+ }
+ .iconswitch .fas{
+     width: 100%;
+     font-size: 30px;
+     transform: translateY(295%);
+ }
+ .iconswitch i::before{
+     font-size: 30px;
+ }
+ .iconswitch-1{
+     display: none;
+ }
+ @media only screen and (max-width: 850px){
+     .translate-block{
+         top: 140px;
+     }
+     .textabsoluted{
+         display: block;
+     }
+     .footer {
+         display: none;
+     }
+     .header-navbar{
+         display: none;
+     }
+     .head{
+         display: inline;
+         top: -60px;
+         left: -60px;
+     }
+     .iconswitch-1{
+         display:inline;
+         position: absolute;
+         top: 10%;
+        
+     }
+     .iconswitch-1 i::before{
+         font-size: 20px;
+         margin: 0 3px;
+        
+     }
+     .iconswitch i::before{
+         display: none;
+     }
+     .select-option:nth-child(1){
+         width: 100%;
+     }
+     .select-option:nth-child(3){
+         width: 100%;
+         display:flex;
+         justify-content: flex-end;
+     }
+     
+ }
+ 
+ @media only screen and (max-height: 400px){
+ 
+     .head{
+         display: none;
+     }
+     .footer {
+         display: none;
+     }
+     .translate-block{
+         top: 30%;
+     }
+     .iconswitch-1{
+         display:inline;
+         position: relative;
+         right:0%;
+         top:10px;
+     }
+     .header-navbar{
+         display: none;
+     }
+ } 

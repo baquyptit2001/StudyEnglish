@@ -38,6 +38,9 @@
           href="{% static 'app-assets/css/plugins/extensions/ext-component-toastr.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app-assets/trantext/tran.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app-assets/trantext/tran.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
 </head>
@@ -68,7 +71,8 @@
                                                           data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                           title="Calendar"><i class="ficon" data-feather="calendar"></i></a>
                 </li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{% url 'term' %}" data-bs-toggle="tooltip"
+                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{% url 'term' %}"
+                                                          data-bs-toggle="tooltip"
                                                           data-bs-placement="bottom" title="Term"><i class="ficon"
                                                                                                      data-feather="check-square"></i></a>
                 </li>
@@ -329,7 +333,7 @@
                                 class="user-name fw-bolder">{{ request.user.username }}</span><span
                                 class="user-status">Admin</span></div>
                         <span class="avatar"><img class="round"
-                                                  src="{{ p.image.url }}"
+                                                  src="{{ profile.image.url }}"
                                                   alt="avatar" height="40" width="40"><span
                                 class="avatar-status-online"></span></span></a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
@@ -353,7 +357,7 @@
                                                                                         data-feather="help-circle"></i>
                             FAQ</a><a
                                 class="dropdown-item" href="{% url 'logout' %}"><i class="me-50"
-                                                                                        data-feather="power"></i> Logout</a>
+                                                                                   data-feather="power"></i> Logout</a>
                     </div>
                 {% else %}
                     <a class="nav-link dropdown-toggle dropdown-user-link"
@@ -475,7 +479,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto"><a class="navbar-brand" href="index.html"><span class="brand-logo">
+            <li class="nav-item me-auto"><a class="navbar-brand" href="{% url 'home' %}"><span class="brand-logo">
                 <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                   <defs>
@@ -533,12 +537,13 @@
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                     data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'game.home' %}"><i data-feather='code'></i><span
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'game.home' %}"><i
+                    data-feather='code'></i><span
                     class="menu-title text-truncate" data-i18n="Email">Game</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'translate' %}"><i
                     data-feather="message-square"></i><span class="menu-title text-truncate"
-                                                            data-i18n="Chat">Chat</span></a>
+                                                            data-i18n="Chat">Translate</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'term' %}"><i
                     data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Term</span></a>

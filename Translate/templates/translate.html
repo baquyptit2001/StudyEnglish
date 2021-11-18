@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %} TransLate {% endblock %}
+{% block content %}
+
+<h2 class="head"><span class="up"> Machine</span>
+  <br><span class="down">      Translator</span></br> </h2>
+  
+<div class="stydy-block">
+ <div class="translate-block">
+   <div class="dropdownoption-language">
+     <div class="select-block">
+       <div class="select-option">
+         <form action="" method="POST">
+          {% csrf_token %}
+           <select name="src" id="select1" onchange="changeoption()">
+            <option value="en-US" {% if context.srcs == 'en-US'%} selected {% endif %} >Tiếng Anh</option>
+            <option value="vi-VN" {% if context.srcs == 'vi-VN'%} selected {% endif %}>Tiếng Việt</option>
+            <option value="fr-FR" {% if context.srcs == 'fr-FR'%} selected {% endif %}>Tiếng Pháp</option>
+            <option value="ru-RU" {% if context.srcs == 'ru-RU'%} selected {% endif %}>Tiếng Nga</option>
+            {% for lang in languages %}
+              <option value="{{lang.code}}" {% if context.srcs == lang.code %} selected {% endif %} >{{lang.namelang}}</option>
+            {% endfor %}
+           </select>
+       </div>
+       <div class="iconswitch-1"><i class="fas fa-arrows-alt-h"></i></div>
+     <div class="select-option">
+       <select name="des" id="select2" onchange="changeoptiontransleted()">
+        <option value="en-US" {% if context.des == 'en-US'%} selected {% endif %} >Tiếng Anh</option>
+        <option value="vi-VN" {% if context.des  == 'vi-VN'%} selected {% endif %}>Tiếng Việt</option>
+        <option value="fr-FR" {% if context.des  == 'fr-FR'%} selected {% endif %}>Tiếng Pháp</option>
+        <option value="ru-RU" {% if context.des  == 'ru-RU'%} selected {% endif %}>Tiếng Nga</option>
+        {% for lang in languages %}
+        <option value="{{lang.code}}" {% if context.des == lang.code %} selected {% endif %} >{{lang.namelang}}</option>
+      {% endfor %}
+       </select>
+      </div>
+</div>
+</div>
+   <div class="text-area">
+     <div class="textabsoluted">
+       <div class="texttranslate">
+           <textarea name="text" id="textscan" cols="80" rows="8" class="scan">{{input}}</textarea>
+           <div class="translate-button-block">
+              <button class="translate-button" > Dịch</button>
+              
+           </div>
+          </form>
+           <div class="list-button">
+             <button class="micro-button" id="recognize-btn"  value="NO" onclick="micro()"><i class="fas fa-microphone" id="microphone-icon"></i></button>
+             <button class="audio-button" onclick="textSpeak()" ><i class="fas fa-volume-up"></i></button>
+          </div>
+       </div>
+       <div class="iconswitch"><i class="fas fa-arrows-alt-h"></i></div>
+       <div class="texttranslate">
+         <textarea name="" id="aftertranslate" cols="80" rows="8" disabled class="scan">{{output}}</textarea>
+         <div class="list-button">
+           <button class="audio-button" onclick="textSpeakTranslated()"><i class="fas fa-volume-up"></i></button>
+        </div>
+     </div>
+   </div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=uQLgOaRo"></script>
+    <script src="{% static 'app-assets/js/texttospeechJS/texttospeech.js' %}"></script>
+     <script src="{% static 'app-assets/js/texttospeechJS/speechtotext.js' %}"></script> 
+    
+   
+{% endblock %}
