@@ -12,3 +12,11 @@ python manage.py runserver --insecure<br />
 5. Mỗi lần pull code mọi người check out về nhánh của mình rồi git merge main
 
 # Tuyệt đối không merge vào nhánh main #
+
+
+#Translate <br />
+Translate sử dùng thư viên googletran để dịch từ <br />
+Cách cài  pip install googletrans==3.1.0a0 <br />
+Phần speech to text sử dụng web speech api của JS <br />
+Phân text to speech sử dung module  ResponsiveVoice (nguồn : https://responsivevoice.org/text-to-speech-languages)#
+
