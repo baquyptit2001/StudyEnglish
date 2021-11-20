@@ -30,6 +30,12 @@ def register(request):
         if request.POST['password1'] != request.POST['password2']:
             messages.error(request, "Password confirmation does not match")
         else:
+            if User.objects.filter(username=request.POST['username']).exists():
+                messages.error(request, "Username already exists")
+                return redirect('register')
+            if User.objects.filter(email=request.POST['email']).exists():
+                messages.error(request, "Email already exists")
+                return redirect('register')
             user = User.objects.create_user(request.POST['username'], request.POST['email'],
                                             request.POST['password1'])
             user.save()

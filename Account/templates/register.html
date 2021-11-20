@@ -118,19 +118,19 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="register-username">Username</label>
                                     <input class="form-control" id="register-username" type="text"
-                                           name="username" placeholder="johndoe"
+                                           name="username" placeholder="johndoe" required
                                            aria-describedby="register-username" autofocus="" tabindex="1"/>
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label" for="register-email">Email</label>
-                                    <input class="form-control" id="register-email" type="text" name="email"
+                                    <input class="form-control" id="register-email" type="email" name="email"
                                            placeholder="john@example.com" aria-describedby="register-email"
-                                           tabindex="2"/>
+                                           tabindex="2" required/>
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label" for="register-password">Password</label>
                                     <div class="input-group input-group-merge form-password-toggle">
-                                        <input class="form-control form-control-merge" id="register-password"
+                                        <input class="form-control form-control-merge" id="register-password" required
                                                type="password" name="password1" placeholder="············"
                                                aria-describedby="register-password" tabindex="3"/><span
                                             class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
@@ -139,7 +139,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="register-password">Password Confirmation</label>
                                     <div class="input-group input-group-merge form-password-toggle">
-                                        <input class="form-control form-control-merge" id="register-password"
+                                        <input class="form-control form-control-merge" id="register-password" required
                                                type="password" name="password2" placeholder="············"
                                                aria-describedby="register-password" tabindex="3"/><span
                                             class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
