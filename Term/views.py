@@ -15,7 +15,7 @@ def term(request):
         )
 
         newTerm.save()
-        return redirect("http://127.0.0.1:8000/term/")
+        return redirect("term")
 
     terms = Term.objects.all().filter(user_id=request.user.id)
     return render(request, 'term.html', {'count': terms.count(), 'terms': terms})
@@ -32,7 +32,7 @@ def edit_term(request, pk):
     if request.method == "POST":
         term_name_update = request.POST['term']
         Term.objects.filter(id=pk).update(term_name=term_name_update)
-        return redirect("http://127.0.0.1:8000/term/")
+        return redirect('term')
 
     return render(request, 'edit-term.html', {"term": term})
 
@@ -68,7 +68,7 @@ def update_vocabulary(request, pk):
         word_update = request.POST['word']
         define_update = request.POST['define']
         Vocabulary.objects.filter(id=pk).update(word=word_update, define=define_update)
-        return redirect("http://127.0.0.1:8000/term/")
+        return redirect("vocabulary", vocabulary.term.id)
         # return redirect(request.META.get('HTTP_REFERER'))
 
     return render(request, 'edit-vocabulary.html', {"vocabulary": vocabulary})
