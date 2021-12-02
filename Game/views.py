@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
@@ -15,7 +16,10 @@ def home(request):
     return render(request, 'index.html', {"question": question, 'answer': answer})
 
 
+@login_required()
 def add_question(request):
+    if not request.user.is_superuser:
+        raise 404
     text = ''
     print(request.user.is_superuser)
     if request.method == "POST":

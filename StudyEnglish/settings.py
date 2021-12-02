@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ur@zm4!&c64*f$f65&lv(&%2)uihbe_*p6j=)^=l2dt#aeiwp='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,8 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/static/app-assets/images/portrait/small/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/app-assets/images/portrait/small')
+MEDIA_URL = '/a/app-assets/images/portrait/small/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'a/app-assets/images/portrait/small')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

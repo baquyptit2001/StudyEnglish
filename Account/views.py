@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -48,11 +49,13 @@ def register(request):
     return render(request, 'register.html')
 
 
+@login_required()
 def log_out(request):
     logout(request)
     return redirect('home')
 
 
+@login_required()
 def change_password(request):
     a = request.user.password
     if request.method == "POST":
@@ -69,6 +72,7 @@ def change_password(request):
     return render(request, 'change_password.html')
 
 
+@login_required()
 def profile(request):
     p = Profile.objects.filter(name=request.user.username)
     if not p.all():

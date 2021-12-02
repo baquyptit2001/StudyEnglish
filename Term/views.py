@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .models import Term, Vocabulary
 
 
 # Create your views here.
 
-
+@login_required()
 def term(request):
     if request.method == "POST":
         name = request.POST['term']
@@ -69,6 +70,5 @@ def update_vocabulary(request, pk):
         define_update = request.POST['define']
         Vocabulary.objects.filter(id=pk).update(word=word_update, define=define_update)
         return redirect("vocabulary", vocabulary.term.id)
-        # return redirect(request.META.get('HTTP_REFERER'))
 
     return render(request, 'edit-vocabulary.html', {"vocabulary": vocabulary})
